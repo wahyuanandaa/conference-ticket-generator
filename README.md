@@ -6,6 +6,10 @@
 
 Terima kasih telah melihat proyek generator tiket konferensi ini. Proyek ini dibuat menggunakan React dan Vite untuk memberikan pengalaman yang modern dan responsif.
 
+## DEMO
+
+[Link Demo Website] (https://wahyuanandaa.github.io/conference-ticket-generator/)
+
 ## Fitur
 
 Pengguna dapat:
@@ -73,7 +77,6 @@ Beberapa area yang bisa dikembangkan lebih lanjut:
 
 ## Penulis
 
-- Website - [Wahyu Ananda](https://wahyuanandaa.github.io/conference-ticket-generator/)
 - GitHub - [@wahyuanandaa](https://github.com/wahyuanandaa)
 
 ## Lisensi
