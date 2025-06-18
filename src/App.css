@@ -1,0 +1,569 @@
+:root {
+  --color-neutral-100: hsl(0, 0%, 100%);
+  --color-neutral-300: hsl(252, 6%, 83%);
+  --color-neutral-500: hsl(245, 15%, 58%);
+  --color-neutral-700: hsl(245, 19%, 35%);
+  --color-neutral-900: hsl(248, 70%, 10%);
+  --color-orange-500: hsl(7, 88%, 67%);
+  --color-orange-700: hsl(7, 71%, 60%);
+  --color-gradient-orage: hsl(7, 86%, 67%);
+  --color-gradient-white: hsl(0, 0%, 100%);
+}
+
+@font-face {
+  font-family: "Inconsolata";
+  src: url("./assets/fonts/static/Inconsolata-Regular.ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Inconsolata";
+  src: url("./assets/fonts/static/Inconsolata-Medium.ttf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Inconsolata";
+  src: url("./assets/fonts/static/Inconsolata-Bold.ttf");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Inconsolata";
+  src: url("./assets/fonts/static/Inconsolata-ExtraBold.ttf");
+  font-weight: 800;
+}
+
+.container {
+  width: 90%;
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+button,
+input[type="submit"] {
+  cursor: pointer;
+  display: block;
+  font-family: inherit;
+  border: none;
+}
+
+input[type="submit"] {
+  background-color: var(--color-orange-500);
+  color: var(--color-neutral-900);
+  font-size: 1.125rem;
+  transition: all 0.3s ease;
+  height: 3.5rem;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+input[type="submit"]:hover {
+  background-color: var(--color-orange-700);
+}
+
+body {
+  background-image: url("./assets/images/background-desktop.png");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  font-family: "Inconsolata", monospace;
+  color: var(--color-neutral-100);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  background-image: url("./assets/images/pattern-lines.svg");
+}
+
+.arco--line {
+  position: relative;
+  min-height: 100dvh;
+}
+
+.arco--line::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-position: left 120%;
+  background-size: min(50%, 800px);
+  background-image: url("./assets/images/pattern-squiggly-line-bottom.svg");
+  background-repeat: no-repeat;
+}
+
+.arco::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-repeat: no-repeat;
+  z-index: -10;
+  background-size: min(50%, 500px);
+  background-position: right top;
+  background-image: url("./assets/images/pattern-squiggly-line-top.svg");
+}
+
+.header {
+  padding: 3rem 0;
+}
+
+.header__logo {
+  display: block;
+  width: max-content;
+  margin: 0 auto;
+}
+
+.main {
+  padding-bottom: 2rem;
+}
+
+.main__description,
+.main__title {
+  text-align: center;
+}
+
+.main__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-neutral-100);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.main__title--name {
+  color: var(--color-orange-500);
+}
+
+.main__description {
+  font-size: 1.125rem;
+  color: var(--color-neutral-500);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.main__description--name {
+  color: var(--color-orange-500);
+  font-weight: 600;
+}
+
+.main__success {
+  text-align: center;
+  margin-bottom: 2rem;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.main__success-title {
+  font-size: 2rem;
+  color: var(--color-neutral-100);
+  margin-bottom: 0.5rem;
+}
+
+.main__success-text {
+  font-size: 1.25rem;
+  color: var(--color-neutral-500);
+}
+
+.form {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 500px;
+  margin: 3rem auto 0;
+  isolation: isolate;
+}
+
+.form.hidden {
+  display: none;
+}
+
+.form__input,
+.form__upload {
+  font-family: "Inconsolata", monospace;
+  border: 1px solid var(--color-neutral-700);
+  border-radius: 12px;
+  padding: 0 0.875rem;
+  color: var(--color-neutral-300);
+  width: 100%;
+  background-color: hsla(245, 19%, 35%, 0.13);
+  height: 3rem;
+  outline: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(1px);
+}
+
+.form__item-content,
+.form__upload {
+  position: relative;
+}
+
+.form__input-border {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+
+.form__input:focus + .form__input-border,
+.form__upload:focus-within .form__input-border {
+  border-color: var(--color-neutral-500);
+  inset: -4px;
+}
+
+:is(.form__input, .form__upload):hover {
+  background-color: hsla(245, 19%, 35%, 0.31);
+}
+
+.form__input.drag-active {
+  background-color: hsla(245, 19%, 35%, 0.31);
+  border-color: var(--color-neutral-500);
+}
+
+.form__input.error {
+  border-color: var(--color-orange-700);
+}
+
+.form__input.error + .form__input-border {
+  border-color: var(--color-orange-700);
+}
+
+.form__error {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  color: var(--color-orange-700);
+  font-size: 0.875rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.form__error--upload {
+  justify-content: center;
+}
+
+.form__error.error svg path {
+  stroke: var(--color-orange-700);
+  fill: var(--color-orange-700);
+}
+
+.form__error.error {
+  color: var(--color-orange-700);
+}
+
+.form__upload {
+  cursor: pointer;
+  height: auto;
+  text-align: center;
+  padding: 0.875rem;
+  border-style: dashed;
+  color: var(--color-neutral-500);
+  transition: all 0.3s ease;
+}
+
+.form__upload:hover {
+  background-color: hsla(245, 19%, 35%, 0.31);
+  border-color: var(--color-neutral-500);
+}
+
+.form__upload.disabled {
+  display: none;
+}
+
+.form__upload-avatar {
+  width: 3.25rem;
+  height: 3.25rem;
+  overflow: hidden;
+  border-radius: 12px;
+  margin: 10px auto 1rem;
+  border: 2px solid hsla(245, 19%, 35%, 0.274);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: hsla(245, 19%, 35%, 0.295);
+}
+
+.form__upload-img {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+}
+
+.form__upload-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.form__upload-actions {
+  display: none;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.form__upload-avatar.active + .form__upload-actions {
+  display: flex;
+}
+
+.form__upload-button {
+  background: none;
+  border: none;
+  color: var(--color-neutral-500);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding: 0.5rem;
+}
+
+.form__upload-button:hover {
+  color: var(--color-neutral-300);
+}
+
+.form__upload-button svg {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.25rem;
+  vertical-align: middle;
+}
+
+.form__upload-button path {
+  fill: currentColor;
+}
+
+.form__upload-button:focus-visible {
+  outline: 2px solid var(--color-neutral-500);
+  outline-offset: 2px;
+}
+
+.form__input:focus-visible {
+  outline: 2px solid var(--color-neutral-500);
+  outline-offset: 2px;
+}
+
+.form__submit:focus-visible {
+  outline: 2px solid var(--color-neutral-500);
+  outline-offset: 2px;
+}
+
+.form__upload-text {
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.form__label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--color-neutral-300);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ticket {
+  display: none;
+  background-image: url("./assets/images/pattern-ticket.svg");
+  background-repeat: no-repeat;
+  max-width: 500px;
+  margin: 4rem auto 0;
+  background-size: contain;
+  padding: 1.5rem;
+  aspect-ratio: 600 / 280;
+  align-items: center;
+  backdrop-filter: blur(10px);
+}
+
+.ticket.active {
+  display: flex;
+}
+
+.ticket__left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.ticket__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.ticket__logo {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.ticket__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-neutral-100);
+  margin-bottom: 0.25rem;
+}
+
+.ticket__date {
+  font-size: 0.875rem;
+  color: var(--color-neutral-300);
+}
+
+.ticket__footer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ticket__avatar {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 12px;
+  border: 2px solid var(--color-neutral-300);
+}
+
+.ticket__footer-content {
+  flex: 1;
+}
+
+.ticket__name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-neutral-100);
+  margin-bottom: 0.25rem;
+}
+
+.ticket__social {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ticket__icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.ticket__github {
+  font-size: 0.875rem;
+  color: var(--color-neutral-300);
+}
+
+.ticket__right {
+  writing-mode: tb-rl;
+  color: var(--color-neutral-500);
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.ticket__number {
+  color: var(--color-neutral-500);
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    background-image: url("./assets/images/background-tablet.png");
+  }
+
+  .main__title {
+    font-size: 2rem;
+  }
+
+  .main__description {
+    font-size: 1rem;
+  }
+
+  .form__label {
+    font-size: 0.875rem;
+  }
+
+  .form__input::placeholder {
+    font-size: 0.875rem;
+  }
+
+  input[type="submit"] {
+    font-size: 1rem;
+  }
+
+  .arco--line::before {
+    background-size: min(50%, 600px);
+  }
+
+  .ticket__title {
+    font-size: 1.25rem;
+  }
+
+  .ticket__name {
+    font-size: 1rem;
+  }
+
+  .ticket__avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .ticket__right {
+    width: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  body {
+    background-image: url("./assets/images/background-mobile.png");
+  }
+
+  .main__title {
+    font-size: 1.5rem;
+  }
+
+  .main__description {
+    font-size: 0.875rem;
+  }
+
+  .ticket__title {
+    font-size: 1rem;
+  }
+
+  .ticket__date {
+    font-size: 0.75rem;
+  }
+
+  .ticket__name {
+    font-size: 0.875rem;
+  }
+
+  .ticket__avatar {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .ticket__right {
+    width: 2rem;
+  }
+}
