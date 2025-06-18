@@ -8,7 +8,7 @@ Terima kasih telah melihat proyek generator tiket konferensi ini. Proyek ini dib
 
 ## DEMO
 
-[Link Demo Website] (https://wahyuanandaa.github.io/conference-ticket-generator/)
+[Link Demo Website](https://wahyuanandaa.github.io/conference-ticket-generator/)
 
 ## Fitur
 
