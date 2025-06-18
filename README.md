@@ -73,7 +73,7 @@ Beberapa area yang bisa dikembangkan lebih lanjut:
 
 ## Penulis
 
-- Website - [Wahyu Ananda](https://github.com/wahyuanandaa)
+- Website - [Wahyu Ananda](https://wahyuanandaa.github.io/conference-ticket-generator/)
 - GitHub - [@wahyuanandaa](https://github.com/wahyuanandaa)
 
 ## Lisensi
